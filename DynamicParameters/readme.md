@@ -1,7 +1,7 @@
 An example of dynamically setting parameter values in an Azure DevOps pipeline.
 
 Because Azure DevOps requires parameter values to be set very early in pipeline
-execution, before any tasks run, it is not possile to set the value of a
+execution, before any tasks run, it is not possible to set the value of a
 parameter based on the output of a task. It is not possible to run a single
 pipeline without human intervention, using values that are not known until the
 time of the pipeline run. There is a workaround: use one pipeline to determine
@@ -17,4 +17,6 @@ PowerShell task.
 
 To try this example yourself, create two pipelines in Azure DevOps. The first
 pipeline should use the azure-pipelines-1.yml file. The second pipeline must
-be named "second-pipeline" and must use the azure-pipelines-2.yml file.
+be named "second-pipeline" and must use the azure-pipelines-2.yml file. You must
+also add the [Trigger Build Task](https://marketplace.visualstudio.com/items?itemName=benjhuser.tfs-extensions-build-tasks)
+extension to your Azure DevOps organization.
