@@ -1,0 +1,20 @@
+# This pipeline determines the value for the dynamic parameter
+# and then triggers the second pipeline
+
+steps:
+  - task: PowerShell@2
+    displayName: Get Filenames
+    inputs:
+      targetType: inline
+      script: |
+        $fileNames = Get-ChildItem -Path $(Build.Repository.LocalPath)/AzDOExmples/DynamicParameters/Files | select FullName
+        Write-Host "##vso[task.setvariable variable=fileNames]$fileNames"
+  - task: TriggerBuild@3
+    displayName: Trigger second pipeline
+    inputs:
+      templateParameters: 'fileNames:$(fileNames)'
+      buildDefinition: second-pipeline
+      authenticationMethod: 'OAuth Token'
+      useSameBranch: true
+      useSameSourceVersion: true
+      password: $(System.AccessToken)

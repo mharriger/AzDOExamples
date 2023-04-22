@@ -1,0 +1,21 @@
+# This pipeline is triggered by the first pipeline. It receives
+# the dynamically-generated list of filenames as a parameter and
+# loops over those values, calling a script to prints the contents
+# of each file
+
+trigger:
+  - none
+
+parameters:
+  - name: fileNames
+    type: object
+    default: []
+
+steps:
+  - ${{ each fileName in parameters.fileNames }}:
+    - task: PowerShell@2
+      displayName: Print file contents
+      inputs:
+        targetType: inline
+        script: Get-Contents $(fileName) | Write-Host
+        
