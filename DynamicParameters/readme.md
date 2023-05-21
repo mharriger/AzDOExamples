@@ -36,7 +36,7 @@ The build service user is selected on the left-hand side of the window, and
 the Queue builds permission drop-down is set to Allow.](documentation/screenshots/pipeline-security-2.PNG)
 
 To demonstrate that the pipeline really does pick up the list of files
-dynamically, you can for this repo and set up the pipelines against your fork.
+dynamically, you can fork this repo and set up the pipelines against your fork.
 Then, add some additional files to the Files folder and re-run the pipeline.
 The contents of those additional files will be printed when second-pipeline
 runs.
