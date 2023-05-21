@@ -17,5 +17,5 @@ steps:
       displayName: Print file contents
       inputs:
         targetType: inline
-        script: Get-Contents $(fileName) | Write-Host
+        script: Get-Contents ${{ fileName }} | Write-Host
         
