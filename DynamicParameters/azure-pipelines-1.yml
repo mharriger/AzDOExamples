@@ -7,7 +7,7 @@ steps:
     inputs:
       targetType: inline
       script: |
-        $fileNames = Get-ChildItem -Path $(Build.Repository.LocalPath)/DynamicParameters/Files | select FullName
+        $fileNames = Get-ChildItem -Path $(Build.Repository.LocalPath)/DynamicParameters/Files | ForEach {"$($_.FullName)"} | ConvertTo-Json -Compress
         Write-Host "##vso[task.setvariable variable=fileNames]$fileNames"
   - task: TriggerBuild@3
     displayName: Trigger second pipeline
